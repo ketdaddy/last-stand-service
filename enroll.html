@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Enrollment — Last Stand Service</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: #a0aec0;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .intro {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro h2 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: #1a1a2e;
+        }
+
+        .intro p {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .how-it-works {
+            background: #edf2f7;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .how-it-works h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+
+        .how-it-works ol {
+            padding-left: 1.25rem;
+            font-size: 0.88rem;
+            color: #4a5568;
+        }
+
+        .how-it-works li {
+            margin-bottom: 0.35rem;
+        }
+
+        .form-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-card h2 {
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+            color: #1a1a2e;
+        }
+
+        .form-card .subtitle {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 1.25rem;
+        }
+
+        .field {
+            margin-bottom: 1rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .field input[type="text"],
+        .field input[type="email"],
+        .field input[type="tel"] {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: #1a1a2e;
+            background: #fff;
+            transition: border-color 0.15s;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+        }
+
+        .field .hint {
+            font-size: 0.78rem;
+            color: #a0aec0;
+            margin-top: 0.2rem;
+        }
+
+        .consent-section {
+            background: #fffff0;
+            border: 1px solid #ecc94b;
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .consent-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #744210;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkbox-row input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: #3182ce;
+        }
+
+        .checkbox-row label {
+            font-size: 0.85rem;
+            color: #2d3748;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .checkbox-row label a {
+            color: #3182ce;
+            text-decoration: underline;
+        }
+
+        .consent-details {
+            font-size: 0.8rem;
+            color: #718096;
+            padding-left: 1.65rem;
+        }
+
+        .consent-details ul {
+            padding-left: 1rem;
+            margin-top: 0.35rem;
+        }
+
+        .consent-details li {
+            margin-bottom: 0.2rem;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: #3182ce;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: #2b6cb0;
+        }
+
+        .btn-submit:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .disclosure-box {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .disclosure-box h2 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: #1a1a2e;
+        }
+
+        .disclosure-box p,
+        .disclosure-box li {
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .disclosure-box ul {
+            padding-left: 1.25rem;
+            margin: 0.5rem 0;
+        }
+
+        .disclosure-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sample-disclosure {
+            background: #edf2f7;
+            border-left: 3px solid #3182ce;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            font-size: 0.85rem;
+            color: #2d3748;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #a0aec0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer a {
+            color: #718096;
+            text-decoration: underline;
+        }
+
+        /* Success state */
+        .success-message {
+            display: none;
+            background: #f0fff4;
+            border: 1px solid #48bb78;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.visible {
+            display: block;
+        }
+
+        .success-message h2 {
+            color: #276749;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .form-content.hidden {
+            display: none;
+        }
+
+        /* Error state */
+        .field-error {
+            border-color: #e53e3e !important;
+        }
+
+        .error-text {
+            color: #e53e3e;
+            font-size: 0.78rem;
+            margin-top: 0.2rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Last Stand Service</h1>
+    <p>Business Enrollment — SMS Auto-Reply for Plumbing Businesses</p>
+</div>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>Recover Missed Calls. Keep More Customers.</h2>
+        <p>When customers call and you can't answer, they call the next plumber. Last Stand Service sends an immediate text message on your behalf — collecting their issue, location, and preference so you can follow up with full context.</p>
+
+        <div class="how-it-works">
+            <h3>How It Works</h3>
+            <ol>
+                <li>Customer calls your business number — you can't answer</li>
+                <li>Our system texts them immediately, identifying your business by name</li>
+                <li>The customer replies with their plumbing issue and details</li>
+                <li>You receive a notification with everything you need to call them back</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        <h2>&#10003; Enrollment Submitted</h2>
+        <p>Thank you! We'll contact you within 1 business day to get your service set up.</p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #718096;">You'll receive a confirmation email at the address you provided.</p>
+    </div>
+
+    <div class="form-content" id="formContent">
+        <div class="form-card">
+            <h2>Enroll Your Business</h2>
+            <p class="subtitle">Fill out the form below to sign up for Last Stand Service.</p>
+
+            <div id="enrollForm">
+                <div class="field">
+                    <label for="businessName">Business Name *</label>
+                    <input type="text" id="businessName" name="businessName" placeholder="e.g., Joe's Plumbing" required>
+                    <p class="error-text" id="businessNameError">Please enter your business name.</p>
+                </div>
+
+                <div class="field">
+                    <label for="ownerName">Owner / Contact Name *</label>
+                    <input type="text" id="ownerName" name="ownerName" placeholder="e.g., Joe Mendez" required>
+                    <p class="error-text" id="ownerNameError">Please enter the owner or contact name.</p>
+                </div>
+
+                <div class="field">
+                    <label for="businessPhone">Business Phone Number *</label>
+                    <input type="tel" id="businessPhone" name="businessPhone" placeholder="e.g., (210) 555-1234" required>
+                    <p class="hint">This is the number your customers call. We'll send auto-replies when calls to this number go unanswered.</p>
+                    <p class="error-text" id="businessPhoneError">Please enter a valid phone number.</p>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., joe@joesplumbing.com" required>
+                    <p class="error-text" id="emailError">Please enter a valid email address.</p>
+                </div>
+
+                <div class="field">
+                    <label for="zipCode">Primary Service Area (ZIP Code)</label>
+                    <input type="text" id="zipCode" name="zipCode" placeholder="e.g., 78209" maxlength="5">
+                </div>
+
+                <div class="consent-section">
+                    <h3>SMS Service Authorization</h3>
+
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="consentSMS" name="consentSMS">
+                        <label for="consentSMS">
+                            I authorize Last Stand Service to send automated SMS messages to callers who reach my business voicemail.
+                            I understand that my customers will receive 2–5 transactional text messages per service request.
+                            No marketing or promotional messages will be sent.
+                            I agree to the <a href="https://ketdaddy.github.io/last-stand-service/terms.html" target="_blank">Terms&nbsp;of&nbsp;Service</a> and <a href="https://ketdaddy.github.io/last-stand-service/privacy.html" target="_blank">Privacy&nbsp;Policy</a>.
+                        </label>
+                    </div>
+
+                    <div class="consent-details">
+                        <p>By checking this box, you also agree to:</p>
+                        <ul>
+                            <li>Display the required SMS disclosure on your website or online listings (see below)</li>
+                            <li>Allow customers to opt out at any time by replying STOP</li>
+                        </ul>
+                    </div>
+
+                    <div class="checkbox-row" style="margin-top: 0.75rem; margin-bottom: 0;">
+                        <input type="checkbox" id="consentData" name="consentData">
+                        <label for="consentData">
+                            I confirm that no mobile opt-in data or phone numbers collected through this service will be shared with third parties or affiliates for marketing or promotional purposes.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-submit" id="submitBtn" disabled onclick="handleSubmit()">
+                    Submit Enrollment
+                </button>
+            </div>
+        </div>
+
+        <div class="disclosure-box">
+            <h2>Required SMS Disclosure for Your Business</h2>
+            <p>After enrollment, you are required to display the following disclosure on your website, Google Business listing, or anywhere your phone number is published:</p>
+
+            <div class="sample-disclosure">
+                "If we miss your call, you may receive a text message to assist with your service request.
+                Message frequency: 2–5 messages per request. Msg &amp; data rates may apply.
+                Reply STOP to opt out at any time. Reply HELP for assistance.
+                <a href="https://ketdaddy.github.io/last-stand-service/privacy.html" target="_blank">Privacy&nbsp;Policy</a> · <a href="https://ketdaddy.github.io/last-stand-service/terms.html" target="_blank">Terms&nbsp;of&nbsp;Service</a>"
+            </div>
+
+            <p style="margin-top: 0.5rem;">This disclosure ensures your customers are informed before they call, consistent with CTIA guidelines and carrier requirements for transactional SMS.</p>
+        </div>
+
+        <div class="disclosure-box">
+            <h2>Program Details</h2>
+            <ul>
+                <li><strong>Program name:</strong> Last Stand Service — SMS Auto-Reply for Plumbing Businesses</li>
+                <li><strong>Message frequency:</strong> 2–5 text messages per service request. No recurring messages. No marketing.</li>
+                <li><strong>Message &amp; data rates</strong> may apply based on your carrier plan.</li>
+                <li><strong>Opt-out:</strong> Customers reply <strong>STOP</strong> to unsubscribe immediately.</li>
+                <li><strong>Help:</strong> Customers reply <strong>HELP</strong> for assistance.</li>
+                <li><strong>Languages:</strong> English and Spanish</li>
+                <li><strong>Privacy Policy:</strong> <a href="https://ketdaddy.github.io/last-stand-service/privacy.html" target="_blank">https://ketdaddy.github.io/last-stand-service/privacy.html</a></li>
+                <li><strong>Terms of Service:</strong> <a href="https://ketdaddy.github.io/last-stand-service/terms.html" target="_blank">https://ketdaddy.github.io/last-stand-service/terms.html</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Last Stand Service | San Antonio, TX<br>
+    <a href="https://ketdaddy.github.io/last-stand-service/index.html">Home</a> ·
+    <a href="https://ketdaddy.github.io/last-stand-service/enroll.html">Enroll</a> ·
+    <a href="https://ketdaddy.github.io/last-stand-service/privacy.html">Privacy Policy</a> ·
+    <a href="https://ketdaddy.github.io/last-stand-service/terms.html">Terms of Service</a>
+</div>
+
+<script>
+    // Enable submit button only when BOTH checkboxes are checked
+    const consentSMS = document.getElementById('consentSMS');
+    const consentData = document.getElementById('consentData');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function updateSubmitState() {
+        submitBtn.disabled = !(consentSMS.checked && consentData.checked);
+    }
+
+    consentSMS.addEventListener('change', updateSubmitState);
+    consentData.addEventListener('change', updateSubmitState);
+
+    function handleSubmit() {
+        // Basic validation
+        let valid = true;
+        const fields = [
+            { id: 'businessName', errorId: 'businessNameError' },
+            { id: 'ownerName', errorId: 'ownerNameError' },
+            { id: 'businessPhone', errorId: 'businessPhoneError' },
+            { id: 'email', errorId: 'emailError' }
+        ];
+
+        fields.forEach(f => {
+            const input = document.getElementById(f.id);
+            const error = document.getElementById(f.errorId);
+            if (!input.value.trim()) {
+                input.classList.add('field-error');
+                error.style.display = 'block';
+                valid = false;
+            } else {
+                input.classList.remove('field-error');
+                error.style.display = 'none';
+            }
+        });
+
+        // Basic email check
+        const emailInput = document.getElementById('email');
+        if (emailInput.value && !emailInput.value.includes('@')) {
+            emailInput.classList.add('field-error');
+            document.getElementById('emailError').style.display = 'block';
+            valid = false;
+        }
+
+        if (!valid) return;
+
+        // Show success, hide form
+        document.getElementById('formContent').classList.add('hidden');
+        document.getElementById('successMessage').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
